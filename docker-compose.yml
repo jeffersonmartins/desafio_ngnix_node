@@ -10,20 +10,13 @@ services:
     depends_on:
       - nodejs
 
-       
   nodejs:
     build: 
       context: nodejs
-    entrypoint: dockerize --wait tcp://mysql:3306 -timeout 20s npm start
-    environment:
-      DB_HOST: mysql
-      DB_USER: root
-      DB_PASSWORD: root
-      DB_NAME: full_cycle
+    entrypoint: dockerize --wait tcp://mysql:3306 -timeout 20s npm start    
     depends_on:
       - mysql
         
-
   mysql:
     image: mysql:latest
     environment:

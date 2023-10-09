@@ -10,11 +10,13 @@ const db = mysql.createConnection({
     user: process.env.DB_USER,
     password: process.env.DB_PASSWORD,
     database: process.env.DB_NAME,
+    port: process.env.DB_PORT
 });
 
 db.connect();
 
 app.get('/', (req, res) => {
+
 
     const name = peopleGenerator();
     db.query('INSERT INTO people (name) VALUES (?)', [name], (error, results) => {
@@ -22,7 +24,7 @@ app.get('/', (req, res) => {
 
     });
 
-    const sqlConsulta = 'SELECT name FROM people';
+    const sqlConsulta = 'SELECT name FROM people'; 
 
     db.query(sqlConsulta, (error, results, fields) => {
         if (error) throw error;

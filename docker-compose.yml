@@ -16,6 +16,9 @@ services:
     entrypoint: dockerize --wait tcp://mysql:3306 -timeout 20s npm start    
     depends_on:
       - mysql
+    volumes:
+      - ./nodejs:/app
+      
         
   mysql:
     image: mysql:latest

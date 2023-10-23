@@ -13,11 +13,12 @@ services:
   nodejs:
     build: 
       context: nodejs
-    entrypoint: dockerize --wait tcp://mysql:3306 -timeout 20s npm start    
+    entrypoint: dockerize --wait tcp://mysql:3306 -timeout 20s npm start
     depends_on:
       - mysql
     volumes:
-      - ./nodejs:/app
+      - ./nodejs:/home/node/app
+      - /home/node/app/node_modules
       
         
   mysql:

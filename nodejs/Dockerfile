@@ -1,10 +1,11 @@
 FROM node:latest
 
-WORKDIR /app
+WORKDIR /home/node/app
 
 COPY package*.json ./
 
 RUN npm install
+
 
 ENV DOCKERIZE_VERSION v0.7.0
 
@@ -17,4 +18,3 @@ COPY . .
 
 EXPOSE 3000
 
-CMD ["npm", "start"]
